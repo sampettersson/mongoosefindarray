@@ -15,7 +15,7 @@ class MongooseFindArray {
 
         this.array.map((arrayItem) => {
             return new mongoose.Types.ObjectId(arrayItem);
-    });
+        });
 
         this.model = model;
     }
@@ -27,9 +27,9 @@ class MongooseFindArray {
                     resolve(result);
                 } else {
                     reject(err);
-    }
-    });
-    });
+                }
+            });
+        });
     }
 }
 
