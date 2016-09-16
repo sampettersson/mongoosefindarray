@@ -13,7 +13,11 @@ class MongooseFindArray {
             throw new Error("Argument 'array' not an Array.");
         }
 
-        this.array.map((arrayItem) => {
+        this.array = this.array.filter((arrayItem) => {
+            return mongoose.Types.ObjectId.isValid(arrayItem);
+        });
+
+        this.array = this.array.map((arrayItem) => {
             return new mongoose.Types.ObjectId(arrayItem);
         });
 

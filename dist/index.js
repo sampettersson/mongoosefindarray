@@ -31,7 +31,11 @@ var MongooseFindArray = function () {
             throw new Error("Argument 'array' not an Array.");
         }
 
-        this.array.map(function (arrayItem) {
+        this.array = this.array.filter(function (arrayItem) {
+            return _mongoose2.default.Types.ObjectId.isValid(arrayItem);
+        });
+
+        this.array = this.array.map(function (arrayItem) {
             return new _mongoose2.default.Types.ObjectId(arrayItem);
         });
 
